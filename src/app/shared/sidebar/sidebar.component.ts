@@ -6,12 +6,24 @@ import { GifsService } from '../../gifs/services/gifs.service';
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent{
-
-  constructor( private gifsService: GifsService) { }
+  
 
   get historial() {
     return this.gifsService.historial;
   }
+
+  constructor( private gifsService: GifsService) { }
+
+  buscar( termino: string) {
+    console.log( termino);
+    
+
+    if ( termino.trim().length === 0) {
+      return;
+    }
+    this.gifsService.buscarGifs( termino );
+  }
+
 
 
 }
